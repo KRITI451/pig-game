@@ -34,7 +34,7 @@ document.querySelector(".btn--hold").addEventListener("click",function(){
     activeplayer=activeplayer===0?1:0;
     document.querySelector(".player--0").classList.toggle("player--active");
   document.querySelector(".player--1").classList.toggle("player--active");
-})
+
 if(numb>=20){
     document.querySelector(`.player--${activeplayer}`).style.backgroundColour="black";
     document.querySelector(`.player--${activeplayer}`).style.color = "white";
@@ -43,7 +43,7 @@ if(numb>=20){
     document.querySelector(".btn--roll").disabled = true;
     document.querySelector(".btn--hold").disabled = true;
   
-}
+}})
 document.querySelector(".btn--new").addEventListener("click",function(){
     document.querySelector(`.player--${activeplayer}`).style.backgroundColor="pink";
     document.querySelector(`.player--${activeplayer}`).style.color = "black";
