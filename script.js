@@ -26,24 +26,25 @@ else{
 })
 document.querySelector(".btn--hold").addEventListener("click",function(){
     numb =Number(document.querySelector(`#score--${activeplayer}`).textContent);
-   numb+=currentNum;
-   document.querySelector(`#score--${activeplayer}`).textContent = numb;
+   numb += currentNum;
+document.querySelector(`#score--${activeplayer}`).textContent = numb;
+document.querySelector(`#current--${activeplayer}`).textContent = 0;
+currentNum = 0;
 
-   document.querySelector(`#current--${activeplayer}`).textContent = 0;
-    currentNum=0;
-    activeplayer=activeplayer===0?1:0;
-    document.querySelector(".player--0").classList.toggle("player--active");
-  document.querySelector(".player--1").classList.toggle("player--active");
+// ✅ WINNING CHECK BEFORE switching player
+if (numb >= 20) {
+  document.querySelector(`.player--${activeplayer}`).style.backgroundColor = "black";
+  document.querySelector(`.player--${activeplayer}`).style.color = "white";
+  document.querySelector(".btn--roll").disabled = true;
+  document.querySelector(".btn--hold").disabled = true;
+  return; // Stop further code
+}
 
-if(numb>=20){
-    document.querySelector(`.player--${activeplayer}`).style.backgroundColour="black";
-    document.querySelector(`.player--${activeplayer}`).style.color = "white";
-  
-    // Optional: Disable buttons
-    document.querySelector(".btn--roll").disabled = true;
-    document.querySelector(".btn--hold").disabled = true;
-  
-}})
+// ✅ Now switch only if no winner
+activeplayer = activeplayer === 0 ? 1 : 0;
+document.querySelector(".player--0").classList.toggle("player--active");
+document.querySelector(".player--1").classList.toggle("player--active");
+})
 document.querySelector(".btn--new").addEventListener("click",function(){
     document.querySelector(`.player--${activeplayer}`).style.backgroundColor="pink";
     document.querySelector(`.player--${activeplayer}`).style.color = "black";
